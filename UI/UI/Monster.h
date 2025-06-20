@@ -1,19 +1,25 @@
 #pragma once
-//있다고 가정하고 작성한 파일 삭제해도 무방
 
 #ifndef Monster_H_
 #define Monster_H_
+#include "Status.h"
+
 
 class Monster
 {
-public:
-
-	int HP = 100, ATK = 100;
-
 private:
+    Status status;
 
-protected:
+public:
+    
+    Monster();
+    ~Monster();
 
+    /*테스트용 랜덤 출력 함수*/
+    void setStatus();
+
+   /*getter: 외부에서 상태 주소 접근용*/
+    Status* GetStatus();
 
 };
 #endif

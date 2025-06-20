@@ -1,21 +1,31 @@
 #include "Title.h"
 #include "UI_Function.h"
-#include "Character.h"
-#include "Monster.h"
+#include "BattleSystem.h" 
+
 int main()
 {
 	Title Game;
 	UI InterFace;
-	Character Player;
-	Monster Monster;
+	BattleSystem Battlesys;
 
 	Game.GameStart();
 	InterFace.GetName();
 
 	while (true)
 	{
-		InterFace.GetPlayerVal(Player.Level, Player.HP, Player.ATK, Player.Gold);
-		InterFace.GetMonsterVal(Monster.HP, Monster.ATK);
-		InterFace.Choose_ACTION();
+		int ActionCheck = 0;
+
+		Status* statPtr1 = Battlesys.Player.GetStatus();
+		Status* statPtr2 = Battlesys.Mon.GetStatus();
+		InterFace.GetPlayerVal(statPtr1->Level, statPtr1->HP, statPtr1->ATK, statPtr1->Gold);
+		InterFace.GetMonsterVal(statPtr2->HP, statPtr2->ATK);
+
+		if (1==InterFace.Choose_ACTION())
+		{
+			Battlesys.Mon.setStatus();
+			Battlesys.Player.setStatus();
+		}
+		InterFace.GetPlayerVal(statPtr1->Level, statPtr1->HP, statPtr1->ATK,statPtr1->Gold);
+		InterFace.GetMonsterVal(statPtr2->HP,statPtr2->ATK);
 	}
 }

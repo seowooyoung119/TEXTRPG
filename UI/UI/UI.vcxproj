@@ -123,15 +123,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BattleSystem.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Monster.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="UI_Fuction.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleSystem.h" />
     <ClInclude Include="Character.h" />
-    <ClInclude Include="Monster.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Monster.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Status.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="UI_Function.h" />
     <ClInclude Include="UI_XY.h" />

@@ -22,7 +22,7 @@ public:
     void GetName();
 
     /* 행동 선택 UI*/
-    void Choose_ACTION();
+    int Choose_ACTION();
 
     /*스테이터스 갱신 ALL in one part1*/
     void GetPlayerVal(int Lv, int HP, int ATK, int Gold);
@@ -78,6 +78,7 @@ public:
    
     /* 로그용 배열*/
     std::vector<std::string> Log, BattleLog;
+
 
 };
 

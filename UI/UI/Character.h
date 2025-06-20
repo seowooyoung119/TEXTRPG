@@ -1,19 +1,22 @@
 #pragma once
-//있다고 가정하고 작성한 파일 삭제해도 무방
 
 #ifndef Character_H_
 #define Character_H_
-
+#include "Status.h"
 class Character
 {
-public :
-
-	int Level = 100, HP = 100, ATK = 100, Gold = 100;
-
 private:
+    Status status; 
 
-protected:
+public:
+    Character();
+    ~Character();
 
+    /*테스트용 랜덤 출력 함수*/
+    void setStatus();
+
+    /*getter: 외부에서 상태 주소 접근용*/
+    Status* GetStatus();
 
 };
-#endif
+#endif;

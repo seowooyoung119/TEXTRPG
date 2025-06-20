@@ -75,7 +75,7 @@ void UI::POS_SHOP()
 {
 	SetCursorPosition(UI_XY::POS_SHOP_X, UI_XY::POS_SHOP_Y);
 	cout << "========SHOP========" << endl;
-	cout << "| NOT Visiting NOW " << endl;
+	cout << "|      NOT NOW " << endl;
 	cout << "____________________" << endl;
 }
 
@@ -177,8 +177,9 @@ void UI::CheckVal()
 }
 
 /* 행동 선택 UI*/
-void UI::Choose_ACTION()
+int UI::Choose_ACTION()
 {
+	int ActionChoosed =0;
 	int ChooseAction = 0;
 	bool IsAction = false;
 	while (IsAction==false)
@@ -206,12 +207,14 @@ void UI::Choose_ACTION()
 		{
 		case 1:
 			Log.push_back(to_string(++LogCount) + " Start Battle");
-			BattleLog.push_back(to_string(++BattleCount) + " This is Battle");
+			BattleLog.push_back(to_string(++BattleCount) + " Moster ATTAK!"+ to_string(PlayerHP));
+			BattleLog.push_back(to_string(++BattleCount) + " PLayter ATTAK" + to_string(MonsterHP));
 			CheckVal();
 			SetCursorPosition(UI_XY::POS_ACTION_X, UI_XY::POS_ACTION_Y + 7);
 			cout << "                        ";
 			++StageCount;;
 			IsAction = true;
+			ActionChoosed = 1;
 			break;
 
 		case 2:
@@ -219,13 +222,16 @@ void UI::Choose_ACTION()
 			CheckVal();
 			SetCursorPosition(UI_XY::POS_ACTION_X, UI_XY::POS_ACTION_Y + 7);
 			cout << "                        ";
+			Log.push_back(to_string(++LogCount) + " Buying Seomthing");
 			IsAction = true;
+			ActionChoosed = 2;
 			break;
 
 		case 3:
 			Log.push_back(to_string(++LogCount) + " End Game");
 			system("cls");
 			IsAction = true;
+			ActionChoosed = 3;
 			exit(0);
 
 		default :
@@ -234,4 +240,5 @@ void UI::Choose_ACTION()
 			system("cls");
 		}
 	}
+	return ActionChoosed;
 }
